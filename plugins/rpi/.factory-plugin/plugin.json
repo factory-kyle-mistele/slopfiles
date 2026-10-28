@@ -1,5 +1,5 @@
 {
-  "name": "rpi-mission",
+  "name": "rpi",
   "description": "Run HumanLayer's RPI workflow (research, design, implement) as a Missions 2.0 Mission: one agent per phase, research droids, and RPI documents stored in the Mission's droid space",
   "version": "0.1.0",
   "author": {

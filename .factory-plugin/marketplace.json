@@ -6,9 +6,9 @@
   },
   "plugins": [
     {
-      "name": "rpi-mission",
+      "name": "rpi",
       "description": "Run HumanLayer's RPI workflow as a Missions 2.0 Mission with one agent per phase and documents in the Mission's droid space",
-      "source": "./plugins/rpi-mission",
+      "source": "./plugins/rpi",
       "category": "productivity",
       "tags": ["rpi", "missions"]
     }

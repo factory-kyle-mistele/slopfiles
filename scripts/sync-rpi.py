@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Generate the rpi-mission Droid plugin from HumanLayer's upstream rpi plugin.
+"""Generate the rpi Droid plugin from HumanLayer's upstream rpi plugin.
 
 Regenerates phase skills (SKILL.md + references/) and droids/. The orchestrator
-skill's SKILL.md (skills/rpi/SKILL.md), shared/*.md, and output-styles/ are hand-written
+skill's SKILL.md (skills/rpi/SKILL.md), shared/*.md, output-styles/, and the
+show-me and effect-program-design skills are hand-maintained
 and only copied, never generated.
 
-Usage: python3 scripts/sync-rpi-mission.py [path/to/humanlayer-skills/plugins/rpi]
+Usage: python3 scripts/sync-rpi.py [path/to/humanlayer-skills/plugins/rpi]
 """
 
 import json
@@ -15,7 +16,7 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-PLUGIN = REPO / "plugins" / "rpi-mission"
+PLUGIN = REPO / "plugins" / "rpi"
 SHARED = PLUGIN / "shared"
 DEFAULT_UPSTREAM = Path.home() / "projects" / "humanlayer-skills" / "plugins" / "rpi"
 
