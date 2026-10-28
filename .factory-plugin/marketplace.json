@@ -1,0 +1,16 @@
+{
+  "name": "slopfiles",
+  "description": "Kyle's personal Droid plugins",
+  "owner": {
+    "name": "kyle"
+  },
+  "plugins": [
+    {
+      "name": "rpi-mission",
+      "description": "Run HumanLayer's RPI workflow as a Missions 2.0 Mission with one agent per phase and documents in the Mission's droid space",
+      "source": "./plugins/rpi-mission",
+      "category": "productivity",
+      "tags": ["rpi", "missions"]
+    }
+  ]
+}
