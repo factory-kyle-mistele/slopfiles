@@ -33,6 +33,8 @@ Find the space ID and Documents directory in the **Shared context space** sectio
 
 Choose a short kebab-case slug from the request, or from the current branch name with `/` replaced by `-`. The task path is `rpi/<task-slug>/` in the space. If `<Documents directory>/rpi/` already holds a task that matches the request, reuse it; if several could match, ask the user which one with `AskUser`. Tell the user the task path.
 
+If the request references a ticket or issue (Linear, GitHub, Jira, Sentry, or an issue URL), fetch the full issue now, including every comment, screenshot, attachment, and linked document. Use what you learn to pick the slug and recommend the flow. The research questions agent records the full ticket in the request document; pass it the ticket identifier and URL, not just the title.
+
 ## 3. Choose the Flow
 
 Read `$SKILLBASE/references/workflow.md` and `$SKILLBASE/references/workflow-choice.md`. Show the box-drawing chart and the implementation note from `workflow-choice.md`, recommend a flow in one or two sentences, then ask with `AskUser`:
@@ -59,6 +61,7 @@ Mode: <create | iterate | implement>
 Task path in the Mission space: rpi/<task-slug>/
 Flow: <chosen flow>
 Original request: <the user's request, verbatim> (research questions only)
+Referenced tickets: <ticket IDs and URLs; fetch each in full, including comments, images, attachments, and linked documents, per mission-overrides.md> (research questions only, or "none")
 User feedback: <verbatim feedback, or "none">
 
 Ask the user interview questions directly with AskUser. Store every RPI document in the Mission's droid space as the skill describes. When the phase is finished, report back with SendMessage using the handoff format in the skill.

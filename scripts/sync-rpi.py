@@ -31,7 +31,7 @@ PHASES = [
         "title": "Research Questions",
         "summary": "writes focused research questions about the current system, plus the original request document",
         "modes": [("create", "create-research-questions"), ("iterate", "iterate-research-questions")],
-        "note": "Create mode starts a task: save the original request from your prompt with the request template, then the questions. Ask the user to confirm or refine the question scope with `AskUser` before handing off.",
+        "note": "Create mode starts a task: save the original request from your prompt with the request template, then the questions. When the request references a ticket or issue, fetch it in full first (comments, screenshots, attachments, linked documents) and record it in the request document as `mission-overrides.md` describes. Ask the user to confirm or refine the question scope with `AskUser` before handing off.",
     },
     {
         "name": "rpi-research",
