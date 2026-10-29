@@ -11,6 +11,13 @@
       "source": "./plugins/rpi",
       "category": "productivity",
       "tags": ["rpi", "missions"]
+    },
+    {
+      "name": "slopfiles",
+      "description": "General-purpose skills: prose, effect-program-design, hunk-review, and bro",
+      "source": "./plugins/slopfiles",
+      "category": "productivity",
+      "tags": ["writing", "effect", "code-review"]
     }
   ]
 }

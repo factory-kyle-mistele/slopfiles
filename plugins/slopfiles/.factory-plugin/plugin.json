@@ -1,0 +1,10 @@
+{
+  "name": "slopfiles",
+  "description": "Kyle's general-purpose skills: prose, effect-program-design, hunk-review, and bro",
+  "version": "0.1.0",
+  "author": {
+    "name": "kyle"
+  },
+  "license": "MIT",
+  "keywords": ["writing", "effect", "code-review", "hunk"]
+}
