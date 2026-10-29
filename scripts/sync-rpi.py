@@ -3,7 +3,7 @@
 
 Regenerates phase skills (SKILL.md + references/) and droids/. The orchestrator
 skill's SKILL.md (skills/rpi/SKILL.md), shared/*.md, output-styles/, and the
-show-me, effect-program-design, and prose skills are hand-maintained
+show-me skill are hand-maintained
 and only copied, never generated.
 
 Usage: python3 scripts/sync-rpi.py [path/to/humanlayer-skills/plugins/rpi]

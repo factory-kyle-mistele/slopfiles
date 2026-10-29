@@ -12,8 +12,6 @@ Requires Missions 2.0, because the documents live in the Mission's shared space 
 | `skills/rpi-<phase>/` | Seven phase skills, each with create and iterate modes. Generated. |
 | `output-styles/plain-and-brief.md` | "Plain and Brief" output style: short plain answers plus Orwell's six rules. Hand-written. Applies only to interactive CLI sessions, not Missions. |
 | `skills/show-me/` | HumanLayer's `show-me` skill: diagrams, code-shape sketches, and HTML explainers. Copied verbatim from humanlayer/skills. |
-| `skills/prose/` | Writing guidelines from the Plain and Brief output style, as a skill agents can invoke (`/prose`). Hand-maintained. |
-| `skills/effect-program-design/` | Effect v4 program design skill. Copied verbatim from `~/projects/dotfiles`. |
 | `droids/` | `codebase-locator`, `codebase-analyzer`, `codebase-pattern-finder`, `web-search-researcher`, `outline-implementer-agent`. Generated. |
 | `shared/droid-space.md` | How phase agents read and write documents in the space. Copied into every phase skill. |
 | `shared/mission-overrides.md` | How upstream RPI steps map to a Mission agent (AskUser, handoff, droids). Copied into every phase skill. |
