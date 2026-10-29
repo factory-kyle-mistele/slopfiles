@@ -1,7 +1,5 @@
 # Install Hunk
 
-Source: https://www.hunk.dev/docs/start/install/ (Hunk is MIT-licensed, by Modem Labs).
-
 Hunk is not installed when `hunk` is not on PATH (`command -v hunk` prints nothing). Ask the user before installing it, then use the first method that fits the machine.
 
 Hunk ships prebuilt binaries for macOS (arm64, x64), Linux (arm64, x64; glibc), and Windows (x64). On x86-64 it needs a CPU with SSE4.2.

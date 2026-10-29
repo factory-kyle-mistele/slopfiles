@@ -5,5 +5,5 @@ description: Interacts with live Hunk diff review sessions via CLI. Inspects rev
 
 # hunk-review
 
-1. Check that Hunk is installed with `command -v hunk`. If it prints nothing, Hunk isn't installed: ask the user, then install it by following `references/install.md`.
-2. Read `references/hunk-review-skill.md` and follow it. That file is the upstream `hunk-review` skill, copied verbatim from [modem-dev/hunk](https://github.com/modem-dev/hunk/blob/main/packages/hunk/skills/hunk-review/SKILL.md) (`packages/hunk/skills/hunk-review/SKILL.md`).
+1. If `command -v hunk` prints nothing, Hunk isn't installed. Ask the user, then install it with `references/install.md`.
+2. Read `references/hunk-review-skill.md` and follow it.
