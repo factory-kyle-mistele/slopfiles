@@ -13,6 +13,18 @@ Your prompt gives you:
 
 Skip the upstream "Use the Task Directory" selection rules. The orchestrator already chose the task path.
 
+## Fetch Referenced Tickets in Full
+
+When the original request references a ticket or issue (Linear, GitHub, Jira, Sentry, or a pasted issue URL), fetch the whole issue with the matching connector, MCP tool, or `gh` before you write anything. The title and description are not enough; root-cause findings often live in the comments. Collect:
+
+- The title, description, status, labels, and assignee.
+- Every comment and reply, in order, with author and date.
+- Screenshots and inline images. Download each one and publish it beside the request document as `NN-request-<description>-<n>.png` (or the matching extension), then link it.
+- Attachments and linked documents or URLs (Notion, Google Docs, Slack threads, PRs, Sentry issues, logs). Fetch each one and summarize it, and keep the exact link.
+- Related or duplicate issues the ticket links to.
+
+Record all of this in the request document under a `## Ticket` section after the user's request. Quote comments verbatim instead of paraphrasing them. Add every URL to `## Source Pointers`. If a source cannot be fetched because the connector is missing, access is denied, or the image cannot be read, list it under `## Unfetched Sources` with the reason, and tell the orchestrator in the handoff.
+
 ## Talk to the User with AskUser
 
 Wherever the process says to ask the user, interview them, wait for their answer, or get their approval, call `AskUser`. Ask one decision per call with its options and your recommendation, then wait for the answer before continuing. Present the context a question needs (diagram, code-shape options, quoted text) in your message just before the `AskUser` call. Do not answer on the user's behalf and do not ask the orchestrator to decide product or design choices.

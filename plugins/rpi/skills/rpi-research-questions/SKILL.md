@@ -27,7 +27,7 @@ Without a mode in your prompt, use `iterate` when the task path already holds th
 
 Follow the selected process in order. Read `$SKILLBASE/references/workflow.md` when choosing the next phase.
 
-Create mode starts a task: save the original request from your prompt with the request template, then the questions. Ask the user to confirm or refine the question scope with `AskUser` before handing off.
+Create mode starts a task: save the original request from your prompt with the request template, then the questions. When the request references a ticket or issue, fetch it in full first (comments, screenshots, attachments, linked documents) and record it in the request document as `mission-overrides.md` describes. Ask the user to confirm or refine the question scope with `AskUser` before handing off.
 
 ## Store Documents in the Droid Space
 
