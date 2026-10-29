@@ -6,15 +6,15 @@ General-purpose skills that don't belong to the `rpi` plugin.
 | --- | --- | --- |
 | `prose` | Writing guidelines for prose a person will read: short, plain answers with precise names, plus Orwell's six rules. Model-invocable. | Hand-maintained in this repo. |
 | `effect-program-design` | Design, write, review, and test production Effect v4 programs. | `~/projects/dotfiles`; see its `ATTRIBUTION.md`. |
-| `hunk-review` | Drives a live [Hunk](https://www.hunk.dev) diff review session from the CLI. | [modem-dev/hunk](https://github.com/modem-dev/hunk) `.agents/skills/hunk-review` (MIT), plus local install references. |
+| `hunk-review` | Drives a live [Hunk](https://www.hunk.dev) diff review session from the CLI. | [modem-dev/hunk](https://github.com/modem-dev/hunk) `packages/hunk/skills/hunk-review` (MIT), plus an install reference. |
 | `bro` | `/bro` restates the last message in plain language. User-invoked only. | [backnotprop/bro](https://github.com/backnotprop/bro) `skills/bro`, verbatim. |
 
 ## hunk-review
 
-`SKILL.md` is upstream's pointer file, copied verbatim with one added paragraph at the end. The pointer loads the real instructions from the installed `hunk` binary (`hunk skill show hunk-review`), so they always match the Hunk version.
+`SKILL.md` is ours and has two steps:
 
-- `references/install.md`: how to install Hunk when `hunk` is not on PATH, from https://www.hunk.dev/docs/start/install/.
-- `references/hunk-review-skill.md`: verbatim copy of the published skill (https://www.hunk.dev/docs/hunk-review-skill.md), used only when Hunk can't be installed.
+1. If `hunk` is not on PATH, install it with `references/install.md` (from https://www.hunk.dev/docs/start/install/).
+2. Read and follow `references/hunk-review-skill.md`, the upstream skill copied verbatim from `packages/hunk/skills/hunk-review/SKILL.md` in modem-dev/hunk.
 
 ## Install
 

@@ -1,7 +1,5 @@
 # Install Hunk
 
-Source: https://www.hunk.dev/docs/start/install/ (Hunk is MIT-licensed, by Modem Labs).
-
 Hunk is not installed when `hunk` is not on PATH (`command -v hunk` prints nothing). Ask the user before installing it, then use the first method that fits the machine.
 
 Hunk ships prebuilt binaries for macOS (arm64, x64), Linux (arm64, x64; glibc), and Windows (x64). On x86-64 it needs a CPU with SSE4.2.
@@ -36,8 +34,7 @@ Useful options:
 ## Verify
 
 ```bash
-hunk --help              # prints "Usage: hunk <command> [options]"
-hunk skill show hunk-review
+hunk --help    # prints "Usage: hunk <command> [options]"
 ```
 
 If the shell can't find `hunk`, add the global npm, Homebrew, mise, or `~/.hunk/bin` directory to PATH and open a new shell.
@@ -45,7 +42,3 @@ If the shell can't find `hunk`, add the global npm, Homebrew, mise, or `~/.hunk/
 ## Update
 
 On Hunk 0.20 and newer, `hunk update` moves npm, Homebrew, and install-script installs to the newest release (`hunk update --check` only checks). mise and Nix installs update through their own tools (`mise up hunk`, your Nix configuration).
-
-## When Hunk can't be installed
-
-`references/hunk-review-skill.md` is a copy of the published skill (https://www.hunk.dev/docs/hunk-review-skill.md). It tracks the newest Hunk release, so prefer `hunk skill show hunk-review` whenever Hunk is installed.
