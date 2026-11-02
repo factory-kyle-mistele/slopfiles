@@ -18,6 +18,17 @@
       "source": "./plugins/slopfiles",
       "category": "productivity",
       "tags": ["writing", "effect", "code-review"]
+    },
+    {
+      "name": "dexterfiles",
+      "description": "Dexter's skills from factory-dexhorthy/slopfiles: conjure-prd-mirror",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/factory-dexhorthy/slopfiles",
+        "path": "plugins/slopfiles"
+      },
+      "category": "productivity",
+      "tags": ["prd", "conjure"]
     }
   ]
 }
