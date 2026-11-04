@@ -8,6 +8,7 @@ General-purpose skills that don't belong to the `rpi` plugin.
 | `effect-program-design` | Design, write, review, and test production Effect v4 programs. | `~/projects/dotfiles`; see its `ATTRIBUTION.md`. |
 | `hunk-review` | Drives a live [Hunk](https://www.hunk.dev) diff review session from the CLI. | [modem-dev/hunk](https://github.com/modem-dev/hunk) `packages/hunk/skills/hunk-review` (MIT), plus an install reference. |
 | `bro` | `/bro` restates the last message in plain language. User-invoked only. | [backnotprop/bro](https://github.com/backnotprop/bro) `skills/bro`, verbatim. |
+| `babysit` | `/babysit` drives your PRs to merge: watches CI, conflicts, and reviews with `scripts/pr-watch`, then merges once approved. | [ain3sh/.agents](https://github.com/ain3sh/.agents) `skills/babysit`, verbatim except the `pr-watch` path. |
 
 ## hunk-review
 
