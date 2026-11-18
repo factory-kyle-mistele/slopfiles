@@ -67,9 +67,12 @@ export default defineConfig({
     "anti-slop/no-object-parameters": "error",
     "anti-slop/no-reflect-apply": "error",
     "anti-slop/no-reflect-get": "error",
+    "anti-slop/no-reexport-only-modules": "error",
     "anti-slop/no-reprovide-ambient-service": "error",
     "anti-slop/no-runtime-typeof": "error",
     "anti-slop/no-shape-in-symbol-names": "error",
+    "anti-slop/no-in-operator": "error",
+    "anti-slop/no-optional-function-parameters": "error",
     "anti-slop/no-unknown-parameters": "error",
     "anti-slop/no-unknown-returns": "error",
     "anti-slop/no-unknown-type-aliases": "error",
@@ -97,12 +100,25 @@ export default defineConfig({
     }
   ],
   rules: {
+    "anti-slop-effect/no-ambient-nondeterminism": "error",
+    "anti-slop-effect/no-direct-fetch": "error",
+    "anti-slop-effect/no-effect-asvoid": "error",
+    "anti-slop-effect/no-global-json": "error",
     "anti-slop-effect/no-manual-effect-error-tag": "error",
     "anti-slop-effect/no-manual-tag-comparison": "error",
     "anti-slop-effect/no-manual-tagged-construction": "error",
     "anti-slop-effect/no-manual-tagged-type": "error",
+    "anti-slop-effect/no-nested-effect-array-methods": "error",
     "anti-slop-effect/no-service-constructor-imports": "error",
+    "anti-slop-effect/no-service-option": "error",
+    "anti-slop-effect/no-shadowed-standard-array-static": "error",
+    "anti-slop-effect/no-silent-error-swallow": "error",
+    "anti-slop-effect/no-sql-type-parameter": "error",
+    "anti-slop-effect/no-static-effect-service-forwarders": "error",
+    "anti-slop-effect/no-try-catch": "error",
+    "anti-slop-effect/pipe-max-arguments": "error",
     "anti-slop-effect/prefer-effect-match": "error",
+    "anti-slop-effect/prefer-option-from-nullable": "error",
     "anti-slop-effect/prefer-tagged-error-handling": "error"
   }
 });
@@ -142,11 +158,14 @@ This repository lints itself the same way in `oxlint.config.ts`.
 - `no-known-value-widening` — rejects known expressions flowing into explicit `unknown`, `object`, anonymous-object, or open-dictionary targets, including known arguments passed to local `unknown` type predicates. Empty dictionary accumulators and finite-key `Record` targets remain valid.
 - `no-module-mocking` — rejects Vitest and Jest `mock`, `doMock`, and `unstable_mockModule` calls in favor of real dependency seams.
 - `no-object-parameters` — rejects `object`, unions containing it, and scoped or transparent generic aliases that resolve to it on function inputs.
+- `no-optional-function-parameters` — rejects `?` optional parameters on function, method, and constructor signatures; use an explicit `string | undefined` union instead. Optional object properties are outside the rule.
 - `no-reflect-apply` — rejects global `Reflect.apply` in favor of typed function calls.
 - `no-reflect-get` — rejects global `Reflect.get` in favor of typed property access or boundary parsing.
+- `no-reexport-only-modules` — rejects modules whose only statements re-export other modules; import from the owning module directly. Route-reserved and entry-point exceptions are configurable via `allowedFilenames`.
 - `no-reprovide-ambient-service` — rejects yielding an Effect service only to provide that same value back into a nested operation.
 - `no-runtime-typeof` — requires boundary parsing instead of ad hoc `typeof` narrowing. Existence probes against the string `"undefined"` are allowed, and type predicates can be enabled explicitly.
 - `no-shape-in-symbol-names` — rejects the case-insensitive substring `shape` in locally owned symbol names while allowing static member names such as Zod's `schema.shape` that cannot be renamed locally.
+- `no-in-operator` — rejects `in` operator key checks; decode the value into a named type, or use `Object.hasOwn` for an explicit own-key check. `for...in` iteration is outside the rule.
 - `no-unknown-parameters` — rejects `unknown` and unions containing it on function inputs except the explicit `cause` convention and the exact subject of a type predicate.
 - `no-unknown-returns` — rejects explicit function contracts that resolve to `unknown`, `Promise<unknown>`, or `PromiseLike<unknown>`, including scoped and transparent generic aliases.
 - `no-unknown-type-aliases` — rejects scoped and transparent generic aliases whose resolved type is `unknown`.
@@ -157,12 +176,25 @@ This repository lints itself the same way in `oxlint.config.ts`.
 
 ### Effect rules
 
+- `no-ambient-nondeterminism` — rejects ambient `Math.random`, argument-less `Date` time reads, and global `crypto` references in favor of Effect's Random, Clock, and Crypto capabilities. Test or UI files that legitimately need the current time are configurable via `allowedDateBasenames` and `allowedDateExtensions` (`.tsx` by default).
+- `no-direct-fetch` — rejects direct `fetch` calls and `window`/`globalThis` fetch aliases in favor of a typed HTTP client boundary.
+- `no-effect-asvoid` — rejects `Effect.asVoid`; return an effect whose success type is already void.
+- `no-global-json` — rejects the global `JSON` API in favor of Effect Schema's `fromJsonString` and encode/decode APIs.
 - `no-manual-effect-error-tag` — rejects manual `_tag` comparisons and switches inside broad `Effect.catch`, `Effect.catchAll`, and `Effect.catchIf` handlers in favor of tagged error handlers.
 - `no-manual-tag-comparison` — rejects direct `_tag` comparisons and `_tag` switches in favor of `Match`, `Predicate.isTagged`, or tagged-enum matching.
 - `no-manual-tagged-construction` — rejects literal `_tag` object construction in favor of Schema, tagged class/error, or `Data.taggedEnum` constructors, including `_tag` object patterns passed to `Match.when` and `Match.not`, and literal `_tag` class fields.
 - `no-manual-tagged-type` — rejects `_tag` properties written by hand in `type` and `interface` declarations. Define the value with a Schema or Data tagged constructor and infer the type from it, e.g. `export type X = typeof X.Type`. Also rejects `_tag` in inline type literals, including generic constraints such as `<A extends { readonly _tag: string }>`.
+- `no-nested-effect-array-methods` — rejects nested Effect `Array` method calls in favor of `pipe`, which preserves inference; only active when `Array` is imported from `effect`.
 - `no-service-constructor-imports` — rejects named `make<CapabilityName>` imports from relative project modules outside `*.test.*` and `*.spec.*` files. Runtime callers should import the owning Layer and yield the contextual service instead. Package and path-alias imports, default imports, and static constructors such as `WorkspaceName.make` are outside the rule.
+- `no-service-option` — rejects `Effect.serviceOption`; require the service directly and provide it in a layer.
+- `no-shadowed-standard-array-static` — rejects standard `Array` static calls (`from`, `isArray`, `of`) when `Array` is imported from `effect`; use `globalThis.Array` instead.
+- `no-silent-error-swallow` — rejects `Effect.void` and `Effect.unit` handlers in `Effect.catch*` calls that silently swallow errors; recover meaningfully, transform the error, or let it propagate.
+- `no-sql-type-parameter` — rejects `sql<Type>` tagged templates; use a typed query builder or decode rows with a validated schema.
+- `no-static-effect-service-forwarders` — rejects static class fields that forward an Effect service method through `Effect.flatMap(Effect.service(this), ...)`, including piped and aliased forms; yield the service at the usage site instead.
+- `no-try-catch` — rejects try/catch statements; use `Effect.try`, `Effect.tryPromise`, or an explicit error channel instead.
+- `pipe-max-arguments` — rejects `pipe` calls longer than 20 arguments; split longer pipelines into named steps.
 - `prefer-effect-match` — rejects chained literal ternaries over the same value in favor of Effect's `Match` API.
+- `prefer-option-from-nullable` — rejects ternaries that choose between `Option.some` and `Option.none` on a null test; use `Option.fromNullable`.
 - `prefer-tagged-error-handling` — rejects `Predicate.isTagged` checks on the error inside broad `Effect.catch`, `Effect.catchAll`, and `Effect.catchIf` handlers in favor of `Effect.catchTag`/`Effect.catchTags`, or `Effect.catchReason`/`Effect.catchReasons` when the check is on `error.reason`. Direct `_tag` comparisons stay with `no-manual-effect-error-tag`.
 
 ### Analysis boundaries
@@ -287,6 +319,109 @@ const value = Reflect.apply(operation, owner, args);
 ```ts
 const value = Reflect.get(owner, key);
 ```
+
+### `no-reexport-only-modules`
+
+```ts
+export { Button } from "./button";
+export type { ButtonProps } from "./button";
+```
+
+### `no-optional-function-parameters`
+
+```ts
+function save(value?: string) {}
+```
+
+Use an explicit union instead:
+
+```ts
+function save(value: string | undefined) {}
+```
+
+### `no-in-operator`
+
+```ts
+const supported = "wakeLock" in navigator;
+```
+
+Use `Object.hasOwn(navigator, "wakeLock")` or decode the value into a named type.
+
+### Effect: `no-ambient-nondeterminism`
+
+```ts
+const id = crypto.randomUUID();
+const value = Math.random();
+const now = new Date();
+```
+
+Use Effect's Crypto, Random, and Clock capabilities instead. UI code that legitimately reads the current time can allow it per file via the `allowedDateBasenames` and `allowedDateExtensions` options (`.tsx` is allowed by default).
+
+### Effect: `no-direct-fetch`
+
+```ts
+const response = await fetch("/api/users");
+```
+
+### Effect: `no-try-catch`
+
+```ts
+try {
+  const value = parse(input);
+} catch {
+  fallback();
+}
+```
+
+Use `Effect.try` or `Effect.tryPromise` instead:
+
+```ts
+const value = Effect.try({
+  try: () => parse(input),
+  catch: (cause) => new ParseError({ cause }),
+});
+```
+
+### Effect: `no-silent-error-swallow`
+
+```ts
+program.pipe(Effect.catch(() => Effect.void));
+```
+
+### Effect: `no-service-option`
+
+```ts
+const service = yield* Effect.serviceOption(CustomFetch);
+```
+
+Require the service directly and provide it in a layer.
+
+### Effect: `no-sql-type-parameter`
+
+```ts
+const users = sql<{ id: string; name: string }>`select * from users`;
+```
+
+### Effect: `no-static-effect-service-forwarders`
+
+```ts
+class Preferences {
+  static readonly get = Effect.flatMap(
+    Effect.service(this),
+    (service) => service.get,
+  );
+}
+```
+
+Yield the service where its method is used instead.
+
+### Effect: `prefer-option-from-nullable`
+
+```ts
+const value = input !== null ? Option.some(input) : Option.none();
+```
+
+Use `Option.fromNullable(input)` instead.
 
 ### `no-runtime-typeof`
 
